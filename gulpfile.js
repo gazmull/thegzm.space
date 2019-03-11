@@ -9,10 +9,10 @@ const server = browserSync.create();
 
 const paths = {
   src: 'src',
-  build: 'build'
+  build: '../thegzm.space-gh/build'
 };
 
-const projects = JSON.parse(require('fs').readFileSync(paths.build + '/assets/projects.json').toString());
+const projects = JSON.parse(require('fs').readFileSync(paths.src + '/assets/projects.json').toString());
 
 const pugFiles = {
   src: paths.src + '/views/**/!(_)*.pug',
