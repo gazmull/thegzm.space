@@ -1,0 +1,6 @@
+body {
+  background-color: #333;
+  color: #fff; }
+
+img.covered {
+  filter: brightness(10%); }
