@@ -9,7 +9,7 @@ const server = browserSync.create();
 
 const paths = {
   src: 'src',
-  build: '../thegzm.space-gh/build'
+  build: '../thegzm.space-gh'
 };
 
 const projects = JSON.parse(require('fs').readFileSync(paths.src + '/assets/projects.json').toString());
