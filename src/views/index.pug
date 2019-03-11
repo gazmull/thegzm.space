@@ -1,0 +1,20 @@
+extends template/_main
+
+block content
+  .container-fluid
+    .row
+      .col-4
+      .col-4.text-center
+        p Oh hi Mark.
+        h3 Active Kamihime PROJECTs (ayy)
+        p
+          - for (const p of projects)
+            - if (p.ready)
+                a.project(name=p.name, href=p.url, target="_blank")
+                  span.position-absolute.text-center.text-danger.invisible(id=`img-${p.name.replace(/[^\w]/g, '')}`) #{p.name}
+                  img(src=`/assets/img/${p.img}`, alt=p.name)
+            - else
+                a.project(name=`${p.name} (N/A)`, href=p.url, target="_blank")
+                  span.position-absolute.text-center.text-danger.invisible(id=`img-${p.name.replace(/[^\w]/g, '')}`) #{p.name}
+                  img.covered(src=`/assets/img/${p.img}`, alt=`${p.name} (N/A)`)
+        h3 WIP so i'll only show the japanese shit

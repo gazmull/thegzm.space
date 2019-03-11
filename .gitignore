@@ -1,0 +1,6 @@
+# Deps
+node_modules
+yarn-error.log
+
+# Dist
+build

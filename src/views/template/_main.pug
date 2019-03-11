@@ -1,0 +1,17 @@
+html(lang="en")
+  head
+    block head
+      include _meta
+      block js
+        include vendors/_js
+      block css
+        include vendors/_css
+      block title
+        title TheGzM.Space
+
+  body
+    block body
+      block navigation
+      block content
+      block footer
+        include _footer
