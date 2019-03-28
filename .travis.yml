@@ -4,6 +4,10 @@ node_js:
   - 10
 install: yarn
 sudo: false
+jobs:
+  include:
+    - stage: deploy
+      script: bash ./deploy/travis.sh
 cache:
   directories:
     - node_modules
