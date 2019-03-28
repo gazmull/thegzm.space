@@ -9,19 +9,19 @@ const server = browserSync.create();
 
 const paths = {
   src: 'src',
-  build: '../thegzm.space-gh'
+  build: 'build'
 };
 
-const projects = JSON.parse(require('fs').readFileSync(paths.src + '/assets/projects.json').toString());
+const projects = () => JSON.parse(require('fs').readFileSync(paths.src + '/assets/projects.json').toString());
 
 const pugFiles = {
   src: paths.src + '/views/**/!(_)*.pug',
-  build: paths.build,
+  build: paths.build
 };
 
 const scssFiles = {
   src: paths.src + '/scss/index.scss',
-  build: paths.build + '/css/',
+  build: paths.build + '/css/'
 };
 
 const tsFiles = {
@@ -32,54 +32,49 @@ gulp.task('pug', () => {
   return gulp.src(pugFiles.src)
     .pipe(pug({
       locals: {
-        projects
+        projects: projects()
       },
       pretty: false
     }))
     .pipe(gulp.dest(pugFiles.build))
+    .pipe(server.stream());
 });
 
 gulp.task('sass', () => {
   return gulp.src(scssFiles.src)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(scssFiles.build))
-    .pipe(browserSync.stream());
+    .pipe(server.stream());
 });
 
 gulp.task('ts', () => {
   return tsProject.src()
     .pipe(tsProject())
     .js.pipe(gulp.dest(tsFiles.build))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+    .pipe(server.stream());
 });
 
 gulp.task('assets', () => {
   return gulp.src(paths.src + '/assets/**/*')
-    .pipe(gulp.dest(paths.build + '/assets'))
+    .pipe(gulp.dest(paths.build + '/assets'));
 });
 
 function serve (done) {
   server.init({
     ghostMode: true,
-    notify: false,
     server: {
       baseDir: paths.build
     },
+    reloadDelay: 1e3,
     open: true
   });
   done();
 }
 
-function reload (done) {
-  setTimeout(() => { browserSync.reload(); done(); }, 500);
-}
-
 const commonTasks = [ 'assets', 'pug', 'sass', 'ts' ];
 
 function watch () {
-  gulp.watch(paths.src, gulp.series(...commonTasks, reload));
+  gulp.watch(paths.src, gulp.series(...commonTasks));
 }
 
 gulp.task('default', gulp.series(...commonTasks, serve, watch));
