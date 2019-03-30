@@ -7,7 +7,7 @@ mixin banner (project)
       id=`img-${project.name.replace(/[^\w]/g, '')}`,
       class='position-absolute invisible d-block btn btn-dark btn-outline-light rounded'
     ) #{project.name}
-    
+
     - if (project.ready)
       img(src=`/assets/img/${project.img}`, alt=name)
     - else
