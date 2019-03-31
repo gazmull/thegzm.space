@@ -7,19 +7,20 @@
 body {
   background-color: #333;
   color: #FFF;
-  & a {
-    &:link, &:visited {
-      color: #FF00AE;
-      text-decoration: none !important;
-      font-weight: bold;
-      transition: color .1s linear;
-    }
-    &:hover {
-      color: #FFF;
-    }
-    &:active {
-      color: #FF00FF;
-    }
+}
+
+a {
+  &:link, &:visited {
+    color: #FF00AE;
+    text-decoration: none !important;
+    font-weight: bold;
+    transition: color .1s linear;
+  }
+  &:hover {
+    color: #FFF;
+  }
+  &:active {
+    color: #FF00FF;
   }
 }
 
