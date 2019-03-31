@@ -26,7 +26,7 @@ html(lang="en")
                 br
                 h6.d-inline-block.card-title #{me.currentLocation}
                 hr
-                p.card-text #{me.aboutMe}
+                p.card-text !{me.aboutMe.replace(/\n/g, '<br>')}
                 - if (me.urls.length)
                   p.card-text
                     each v, i in me.urls
