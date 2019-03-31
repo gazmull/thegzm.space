@@ -1,6 +1,1 @@
-body {
-  background-color: #333;
-  color: #fff; }
-
-img.covered {
-  filter: brightness(10%); }
+@import url("https://fonts.googleapis.com/css?family=Raleway");*{-webkit-backface-visibility:hidden;backface-visibility:hidden}body{background-color:#333;color:#FFF}body a{color:#FF00AE;text-decoration:none !important;font-weight:bold;-webkit-transition:color .15s ease-in-out;-o-transition:color .15s ease-in-out;transition:color .15s ease-in-out}body a:hover{color:#FFF}h1,h2,h3,h4,h5,h6{font-family:'Raleway', sans-serif}ul:not(.list-group,.navbar-nav){list-style-type:square}.container-fluid{max-width:1536px}.project{overflow:hidden}.project .card-img-overlay{background-color:rgba(80,80,80,0.65);padding:10px;opacity:0;-webkit-transition:opacity .25s ease-in-out;-o-transition:opacity .25s ease-in-out;transition:opacity .25s ease-in-out;z-index:-1}.project .card-img-overlay.hovered{opacity:1;z-index:0}.project img{opacity:1;-webkit-transition:all 0.8s cubic-bezier(0.01, 1, 0.22, 0.99) 0s;-o-transition:all 0.8s cubic-bezier(0.01, 1, 0.22, 0.99) 0s;transition:all 0.8s cubic-bezier(0.01, 1, 0.22, 0.99) 0s;will-change:transform, opacity}.project img.covered{-webkit-filter:brightness(25%);filter:brightness(25%)}.project img.hovered{opacity:0.5;-webkit-transform:scale(1.25);-ms-transform:scale(1.25);transform:scale(1.25)}

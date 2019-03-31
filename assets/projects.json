@@ -1,26 +1,41 @@
-[
-  {
-    "name": "Eros / Kamihime Database / Sati",
-    "url": "https://github.com/gazmull/eros-bot",
-    "img": "eros-kamihimedb.png",
-    "ready": true
-  },
-  {
-    "name": "Justitia",
-    "url": "https://github.com/gazmull/justitia-bot",
-    "img": "justitia.png",
-    "ready": false
-  },
-  {
-    "name": "Shamash",
-    "url": "https://github.com/gazmull/shamash-bot",
-    "img": "shamash.png",
-    "ready": false
-  },
-  {
-    "name": "Ramiel",
-    "url": "https://github.com/gazmull/ramiel-bot",
-    "img": "ramiel.png",
-    "ready": true
-  }
-]
+{
+  "active": [
+    {
+      "name": [ "Discord PaginationEmbed" ],
+      "description": "A pagination utility for MessageEmbed in Discord.JS. 📜🛠",
+      "url": [ "https://docs.thegzm.space/discord-paginationembed" ],
+      "img": "discord.js.png",
+      "ready": true
+    },
+    {
+      "name": [ "Eros", "Kamihime Database", "Sati" ],
+      "description": "Discord bots dedicated to Kamihime PROJECT game. 👩‍👩‍👧",
+      "url": [ "https://github.com/gazmull/eros-bot", "https://github.com/gazmull/kamihime-database", "https://github.com/gazmull/sati-bot"],
+      "img": "eros-kamihimedb.png",
+      "ready": true
+    },
+    {
+      "name": [ "Ramiel" ],
+      "description": "Discord bot for Music. 🎵",
+      "url": [ "https://github.com/gazmull/ramiel-bot" ],
+      "img": "ramiel.png",
+      "ready": true
+    }
+  ],
+  "inactive": [
+    {
+      "name": [ "Shamash" ],
+      "description": "Discord bot for Kamihime PROJECT Fandom moderation. 📚",
+      "url": [ "https://github.com/gazmull/shamash-bot" ],
+      "img": "shamash.png",
+      "ready": false
+    },
+    {
+      "name": [ "Justitia" ],
+      "description": "Discord bot for Discord server moderation. 💢❗🔨",
+      "url": [ "https://github.com/gazmull/justitia-bot" ],
+      "img": "justitia.png",
+      "ready": false
+    }
+  ]
+}
