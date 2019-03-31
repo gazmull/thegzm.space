@@ -4,49 +4,9 @@
   backface-visibility: hidden;
 }
 
-#body {
+body {
   background-color: #333;
   color: #FFF;
-  & :not(nav) a {
-    &:link, &:visited {
-      color: #FF00AE;
-      text-decoration: none !important;
-      font-weight: bold;
-      transition: color .1s linear;
-    }
-    &:hover {
-      color: #FFF;
-    }
-    &:active {
-      color: #FF00FF;
-    }
-  }
-  & .project {
-    overflow: hidden;
-    & .card-img-overlay {
-      background-color: rgba(80, 80, 80, 0.65);
-      padding: 10px;
-      opacity: 0;
-      transition: opacity .25s ease-in-out;
-      z-index: -1;
-      &.hovered {
-        opacity: 1;
-        z-index: 0;
-      }
-    }
-    & img {
-      opacity: 1;
-      transition: all $core-transition;
-      will-change: transform, opacity;
-      &.covered {
-        filter: brightness(25%);
-      }
-      &.hovered {
-        opacity: 0.5;
-        transform: scale(1.25);
-      }
-    }
-  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -57,6 +17,48 @@ ul:not(.list-group, .navbar-nav) {
   list-style-type: square;
 }
 
+a {
+  &:link, &:visited {
+    color: #FF00AE;
+    text-decoration: none !important;
+    font-weight: bold;
+    transition: color .1s linear;
+  }
+  &:hover {
+    color: #FFF;
+  }
+  &:active {
+    color: #FF00FF;
+  }
+}
+
 .container-fluid {
   max-width: 1536px;
+}
+
+.project {
+  overflow: hidden;
+  & .card-img-overlay {
+    background-color: rgba(80, 80, 80, 0.65);
+    padding: 10px;
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+    z-index: -1;
+    &.hovered {
+      opacity: 1;
+      z-index: 0;
+    }
+  }
+  & img {
+    opacity: 1;
+    transition: all $core-transition;
+    will-change: transform, opacity;
+    &.covered {
+      filter: brightness(25%);
+    }
+    &.hovered {
+      opacity: 0.5;
+      transform: scale(1.25);
+    }
+  }
 }
