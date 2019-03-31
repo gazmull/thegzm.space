@@ -1,8 +1,12 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 const pug  = require('gulp-pug');
 const ts = require('gulp-typescript');
+const terser = require('gulp-terser');
 const browserSync = require('browser-sync');
+const { sync: del } = require('del');
+const { default: fetch } = require('node-fetch');
 
 const tsProject = ts.createProject('tsconfig.json');
 const server = browserSync.create();
@@ -12,7 +16,18 @@ const paths = {
   build: 'build'
 };
 
-const projects = () => JSON.parse(require('fs').readFileSync(paths.src + '/assets/projects.json').toString());
+const read = path => JSON.parse(require('fs').readFileSync(path).toString());
+const me = (async () => {
+  const response = await fetch('https://en.gravatar.com/gazmull.json');
+
+  if (!response.ok) throw new Error('Response was not ok.');
+
+  const json = await response.json();
+
+  return json.entry[0];
+})();
+const projects = () => read(paths.src + '/assets/projects.json');
+const documentations = () => read(paths.src + '/assets/documentations.json');
 
 const pugFiles = {
   src: paths.src + '/views/**/!(_)*.pug',
@@ -21,18 +36,25 @@ const pugFiles = {
 
 const scssFiles = {
   src: paths.src + '/scss/index.scss',
-  build: paths.build + '/css/'
+  build: paths.build + '/css'
 };
 
 const tsFiles = {
-  build: paths.build + '/js/'
+  build: paths.build + '/js'
 };
 
-gulp.task('pug', () => {
+const terserFiles = {
+  src: tsFiles.build + '/**/*.js',
+  dest: tsFiles.build
+};
+
+gulp.task('pug', async () => {
   return gulp.src(pugFiles.src)
     .pipe(pug({
       locals: {
-        projects: projects()
+        me: await me,
+        projects: projects(),
+        documentations: documentations()
       },
       pretty: false
     }))
@@ -42,7 +64,8 @@ gulp.task('pug', () => {
 
 gulp.task('sass', () => {
   return gulp.src(scssFiles.src)
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(autoprefixer({ browsers: [ '>= 0.1%', 'last 5 versions' ] }))
     .pipe(gulp.dest(scssFiles.build))
     .pipe(server.stream());
 });
@@ -54,9 +77,26 @@ gulp.task('ts', () => {
     .pipe(server.stream());
 });
 
+gulp.task('terser', () => {
+  return gulp.src(terserFiles.src)
+    .pipe(terser({
+      compress: true,
+      mangle: true,
+      toplevel: true,
+      ecma: 6
+    }))
+    .pipe(gulp.dest(terserFiles.dest));
+});
+
 gulp.task('assets', () => {
   return gulp.src(paths.src + '/assets/**/*')
     .pipe(gulp.dest(paths.build + '/assets'));
+});
+
+gulp.task('clean', () => {
+  del([ paths.build ]);
+
+  return Promise.resolve(true);
 });
 
 function serve (done) {
@@ -78,4 +118,4 @@ function watch () {
 }
 
 gulp.task('default', gulp.series(...commonTasks, serve, watch));
-gulp.task('build', gulp.series(...commonTasks));
+gulp.task('build', gulp.series('clean', ...commonTasks, 'terser'));

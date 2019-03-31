@@ -23,5 +23,5 @@ cd build
 git add --all .
 git config user.name "Travis CI"
 git config user.email "${COMMIT_EMAIL}"
-git commit -m "Docs build: ${SHA}" || true
+git commit -m "Build: ${SHA}" || true
 git push "https://${GITHUB_TOKEN}@github.com/gazmull/thegzm.space.git" $TARGET_BRANCH

@@ -1,0 +1,38 @@
+extends template/_main
+
+mixin banner (project)
+  - const name = `${project.name.join(' / ')}${project.ready ? '' : ' (N/A)'}`;
+  - const src = /^https?:\/\//.test(project.img) ? project.img : `/assets/img/${project.img}`;
+  .card.bg-dark.my-1.project(id=project.name[0].replace(/ +/g, '-'))
+    - if (project.ready)
+      img.card-img(src=src, alt=name)
+    - else
+      img.card-img.covered(src=src, alt=name)
+    .card-img-overlay
+      h5.card-title
+        each v, i in project.url
+          a(href=v, target='_blank') #{project.name[i]}
+          | #{i === project.url.length - 1 ? '' : ' / '}
+      p.card-text #{project.description}
+
+mixin checkProjects (projects)
+  - if (projects && projects.length)
+    - for (const project of projects)
+      +banner(project)
+  - else
+    p Hmm... nothing to see here!
+
+block content
+  .row
+    .col-sm-12.col-md-4
+      h1 My Projects
+      p Hover to an image for information
+      hr
+      .row
+        .col
+          h2 Active Projects
+          +checkProjects(projects.active)
+      .row
+        .col
+          h2 Inactive Projects
+          +checkProjects(projects.inactive)

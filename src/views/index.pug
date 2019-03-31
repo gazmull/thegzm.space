@@ -1,26 +1,28 @@
 extends template/_main
 
-mixin banner (project)
-  - const name = `${project.name}${project.ready ? '' : ' (N/A)'}`;
-  a.project(name=project.name, href=project.url, target="_blank")
-    span(
-      id=`img-${project.name.replace(/[^\w]/g, '')}`,
-      class='position-absolute invisible d-block btn btn-dark btn-outline-light rounded'
-    ) #{project.name}
+mixin item (obj, url)
+  - const name = `${obj.name.join(' / ')}${obj.ready ? '' : ' (N/A)'}`;
+  li
+    a(href=`${url}#${obj.name[0].replace(/ +/g, '-')}`) #{name}
 
-    - if (project.ready)
-      img(src=`/assets/img/${project.img}`, alt=name)
+mixin checkItems (items, url)
+  - if (items)
+    - items = items.active.concat(items.inactive);
+    - if (items.length)
+      ul
+        - for (const item of items)
+          +item(item, url)
     - else
-      img.covered(src=`/assets/img/${project.img}`, alt=name)
+      p Hmm... nothing to see here!
+  - else
+    p Hmm... resolves to nothing!
 
 block content
-  .container-fluid
-    .row
-      .col-4
-      .col-4.text-center
-        p Oh hi Mark.
-        h3 Active Kamihime PROJECTs (ayy)
-        p
-          - for (const project of projects)
-            +banner(project)
-        h3 WIP so i'll only show the japanese shit
+  .row
+    .col-sm-12.col-md-4
+      h1 Welcome!
+      p Contains active and inactive properties
+      h3 My Projects
+      +checkItems(projects, '/projects.html')
+      h3 My Documentations
+      +checkItems(documentations, '/documentations.html')

@@ -2,6 +2,7 @@ html(lang="en")
   head
     block head
       include _meta
+      link(rel='shortcut icon', type='image/png', href='assets/img/logo.png')
       block js
         include vendors/_js
       block css
@@ -10,8 +11,29 @@ html(lang="en")
         title TheGzM.Space
 
   body
+    block navigation
+      include _navigation
     block body
-      block navigation
-      block content
-      block footer
-        include _footer
+      .container-fluid
+        .row
+          .col-4.position-absolute.d-none.d-lg-block.mx-auto(style='right: 0;')
+            h1 About Me
+            .card.bg-dark(style='width: 20rem')
+              .card-body
+                img.rounded-circle.float-left(src=me.thumbnailUrl, width=80, height=80, alt='thumbnail')
+                h5.d-inline-block.card-title
+                  a(href=me.profileUrl) #{me.displayName}
+                br
+                h6.d-inline-block.card-title #{me.currentLocation}
+                hr
+                p.card-text #{me.aboutMe}
+                - if (me.urls.length)
+                  p.card-text
+                    each v, i in me.urls
+                      a(href=v.value) #{v.title}
+                      | #{i === me.urls.length - 1 ? '' : ' | '}
+                    |  | 
+                    a(href='https://github.com/gazmull') Github
+        block content
+        block footer
+          include _footer
