@@ -1,0 +1,41 @@
+{
+  "active": [
+    {
+      "name": [ "Discord PaginationEmbed" ],
+      "description": "A pagination utility for MessageEmbed in Discord.JS. 📜🛠",
+      "url": [ "https://docs.thegzm.space/discord-paginationembed" ],
+      "img": "discord.js.png",
+      "ready": true
+    },
+    {
+      "name": [ "Eros", "Kamihime Database"],
+      "description": "Discord bots dedicated to Kamihime PROJECT game. 👩‍👩‍👧",
+      "url": [ "https://docs.thegzm.space/eros-bot", "https://docs.thegzm.space/kamihime-database"],
+      "img": "eros-kamihimedb.png",
+      "ready": true
+    },
+    {
+      "name": [ "Ramiel" ],
+      "description": "Discord bot for Music. 🎵",
+      "url": [ "https://github.com/gazmull/ramiel-bot#readme" ],
+      "img": "ramiel.png",
+      "ready": true
+    }
+  ],
+  "inactive": [
+    {
+      "name": [ "Shamash" ],
+      "description": "Discord bot for Kamihime PROJECT Fandom moderation. 📚",
+      "url": [ "https://github.com/gazmull/shamash-bot#readme" ],
+      "img": "shamash.png",
+      "ready": false
+    },
+    {
+      "name": [ "Justitia" ],
+      "description": "Discord bot for Discord server moderation. 💢❗🔨",
+      "url": [ "https://github.com/gazmull/justitia-bot#readme" ],
+      "img": "justitia.png",
+      "ready": false
+    }
+  ]
+}

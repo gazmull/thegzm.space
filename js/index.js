@@ -1,15 +1,1 @@
-$(() => {
-    $('.project')
-        .on('mouseenter', ({ currentTarget: $this }) => {
-        const name = $($this).attr('name');
-        if (!name)
-            return;
-        $(`#img-${name.replace(/[^\w]/g, '')}`).removeClass('invisible');
-    })
-        .on('mouseleave', ({ currentTarget: $this }) => {
-        const name = $($this).attr('name');
-        if (!name)
-            return;
-        $(`#img-${name.replace(/[^\w]/g, '')}`).addClass('invisible');
-    });
-});
+$(()=>{const e=/(#.+)$/.exec(window.location.href);e&&$(`.project${e[1]}`).css({border:"#FF00AE 1px solid"}),$(".project").on("mouseenter",function(){const e=`#${this.id}`;$(`${e} .card-img-overlay`).addClass("hovered"),$(`${e} img`).addClass("hovered")}).on("mouseleave",function(){const e=`#${this.id}`;$(`${e} .card-img-overlay`).removeClass("hovered"),$(`${e} img`).removeClass("hovered")})});
