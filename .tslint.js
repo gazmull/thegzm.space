@@ -6,6 +6,7 @@ const RULES = {
   curly: [ true, 'as-needed' ],
   eofline: true,
   indent: [ true, 'spaces', 2 ],
+  'linebreak-style': [true, 'LF'],
   'member-ordering': [ true, {
     order: [ 'constructor', 'instance-field', 'instance-method', 'static-field', 'static-method' ]
   } ],

@@ -1,9 +1,10 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
+const postCss = require('gulp-postcss');
 const pug  = require('gulp-pug');
 const ts = require('gulp-typescript');
 const terser = require('gulp-terser');
+const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync');
 const { sync: del } = require('del');
 const { default: fetch } = require('node-fetch');
@@ -27,7 +28,6 @@ const me = (async () => {
   return json.entry[0];
 })();
 const projects = () => read(paths.src + '/assets/projects.json');
-const documentations = () => read(paths.src + '/assets/documentations.json');
 
 const pugFiles = {
   src: paths.src + '/views/**/!(_)*.pug',
@@ -53,8 +53,7 @@ gulp.task('pug', async () => {
     .pipe(pug({
       locals: {
         me: await me,
-        projects: projects(),
-        documentations: documentations()
+        projects: projects()
       },
       pretty: false
     }))
@@ -65,7 +64,7 @@ gulp.task('pug', async () => {
 gulp.task('sass', () => {
   return gulp.src(scssFiles.src)
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-    .pipe(autoprefixer({ browsers: [ '>= 0.1%', 'last 5 versions' ] }))
+    .pipe(postCss([ autoprefixer() ]))
     .pipe(gulp.dest(scssFiles.build))
     .pipe(server.stream());
 });

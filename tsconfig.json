@@ -4,7 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
+    "module": "es6",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "outDir": "build/js",
