@@ -1,39 +1,72 @@
 {
   "active": [
     {
-      "name": [ "Discord PaginationEmbed" ],
+      "names": [ "Discord PaginationEmbed" ],
       "description": "A pagination utility for MessageEmbed in Discord.JS. 📜🛠",
-      "url": [ "https://docs.thegzm.space/discord-paginationembed" ],
+      "urls": [
+        {
+          "home": "https://docs.thegzm.space/discord-paginationembed",
+          "docs": "https://docs.thegzm.space/discord-paginationembed"
+        }
+      ],
       "img": "discord.js.png",
       "ready": true
     },
     {
-      "name": [ "Eros", "Kamihime Database", "Sati" ],
+      "names": [ "Eros", "Kamihime Database", "Sati" ],
       "description": "Discord bots dedicated to Kamihime PROJECT game. 👩‍👩‍👧",
-      "url": [ "https://github.com/gazmull/eros-bot", "https://github.com/gazmull/kamihime-database", "https://github.com/gazmull/sati-bot"],
+      "urls": [
+        {
+          "home": "https://github.com/gazmull/eros-bot",
+          "docs": "https://docs.thegzm.space/eros-bot"
+        },
+        {
+          "home": "https://github.com/gazmull/kamihime-database",
+          "docs": "https://docs.thegzm.space/kamihime-database"
+        },
+        {
+          "home": "https://github.com/gazmull/sati-bot",
+          "docs": ""
+        }
+      ],
       "img": "eros-kamihimedb.png",
       "ready": true
     },
     {
-      "name": [ "Ramiel" ],
+      "names": [ "Ramiel" ],
       "description": "Discord bot for Music. 🎵",
-      "url": [ "https://github.com/gazmull/ramiel-bot" ],
+      "urls": [
+        {
+          "home": "https://github.com/gazmull/ramiel-bot",
+          "docs": "https://github.com/gazmull/ramiel-bot#readme"
+        }
+      ],
       "img": "ramiel.png",
       "ready": true
     }
   ],
   "inactive": [
     {
-      "name": [ "Shamash" ],
+      "names": [ "Shamash" ],
       "description": "Discord bot for Kamihime PROJECT Fandom moderation. 📚",
-      "url": [ "https://github.com/gazmull/shamash-bot" ],
+      "urls": [
+        {
+          "home": "https://github.com/gazmull/shamash-bot",
+          "docs": "https://github.com/gazmull/shamash-bot#readme"
+        }
+      ],
       "img": "shamash.png",
       "ready": false
     },
     {
-      "name": [ "Justitia" ],
+      "names": [ "Justitia" ],
       "description": "Discord bot for Discord server moderation. 💢❗🔨",
-      "url": [ "https://github.com/gazmull/justitia-bot" ],
+      "urls": [
+        {
+          "home": "https://github.com/gazmull/justitia-bot",
+          "docs": "https://github.com/gazmull/justitia-bot#readme"
+        }
+      ],
       "img": "justitia.png",
       "ready": false
     }
