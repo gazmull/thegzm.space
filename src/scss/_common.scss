@@ -3,15 +3,15 @@
 }
 
 body {
-  background-color: #333;
-  color: #FFF;
-  font-family: 'Open Sans', sans-serif;
+  background-color: $core-bg;
+  color: $core-text;
+  font-family: $core-font-content;
   overflow-y: scroll !important;
   padding-right: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: $core-font-header;
 }
 
 ul {
@@ -20,15 +20,15 @@ ul {
 
 a {
   &:link, &:visited {
-    color: #FF00AE;
+    color: $core-text-url;
     text-decoration: none !important;
     font-weight: normal;
     transition: color .1s linear;
   }
   &:hover {
-    color: #FFF;
+    color: $core-text;
   }
   &:active {
-    color: #FF00FF;
+    color: $core-text-hover;
   }
 }

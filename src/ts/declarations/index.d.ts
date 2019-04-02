@@ -1,6 +1,7 @@
 export interface IProject {
   names: string[];
   description: string;
+  stack: string[];
   urls: {
     home: string;
     docs: string;

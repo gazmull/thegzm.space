@@ -3,7 +3,7 @@ extends template/_main
 mixin banner (project, prop)
   - const name = `${project.names.join(' / ')}${project.ready ? '' : ' (N/A)'}`;
   - const src = /^https?:\/\//.test(project.img) ? project.img : `/assets/img/${project.img}`;
-    .card.bg-dark.my-1.project(
+    .card.bg-transparent.aero.my-1.project(
       id=project.names[0].replace(/ +/g, '-'),
       title='Click me for more info!',
       data-prop=prop,
@@ -16,10 +16,17 @@ mixin banner (project, prop)
       - else
         img.card-img.covered(src=src, alt=name)
       .card-img-overlay
-        h5.card-title
+        h3.card-title
           each v, i in project.names
-            | #{project.names[i]}#{i === project.urls.length - 1 ? '' : ' / '}
-        p.card-text #{project.description}
+            | #{project.names[i]}#{i === project.urls.length - 1 ? '' : ' / '} 
+        p
+          - if (!project.ready)
+            span.badge.badge-danger NOT AVAILABLE
+            | 
+          - const cleanedLangs = project.stack.filter((v, i, arr) => arr.indexOf(v) === i);
+          each v in cleanedLangs
+            span.badge.badge-secondary #{v}
+            | 
 
 mixin checkProjects (projects, prop)
   - const cProjects = projects[prop];
@@ -31,7 +38,7 @@ mixin checkProjects (projects, prop)
 
 block content
   .row
-    .col-sm-12.col-md-4
+    .col-sm-12.col-lg-4
       h1 My Projects
       p Click an image for information.
       hr
@@ -46,14 +53,14 @@ block content
 
   .modal.fade(tabindex='-1', role='dialog')
     .modal-dialog.modal-dialog-centered(role='document')
-      .modal-content.bg-dark
+      .modal-content.aero.bg-transparent
         .modal-header
           .modal-background
             img.img-fluid(alt='project banner')
           h4.modal-title
           button.close.text-white(data-dismiss='modal')
             span &times;
-        .modal-body
+        .modal-body.bg-dark
           p.col-6.float-left
           .col-6.float-right
             h5 Home
