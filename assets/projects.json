@@ -3,6 +3,7 @@
     {
       "names": [ "Discord PaginationEmbed" ],
       "description": "A pagination utility for MessageEmbed in Discord.JS. 📜🛠",
+      "stack": [ "TypeScript", "NodeJS" ],
       "urls": [
         {
           "home": "https://docs.thegzm.space/discord-paginationembed",
@@ -15,6 +16,7 @@
     {
       "names": [ "Eros", "Kamihime Database", "Sati" ],
       "description": "Discord bots dedicated to Kamihime PROJECT game. 👩‍👩‍👧",
+      "stack": [ "TypeScript", "NodeJS", "MariaDB", "NGINX" ],
       "urls": [
         {
           "home": "https://github.com/gazmull/eros-bot",
@@ -35,6 +37,7 @@
     {
       "names": [ "Ramiel" ],
       "description": "Discord bot for Music. 🎵",
+      "stack": [ "TypeScript", "NodeJS", "MariaDB", "Lavalink", "Docker" ],
       "urls": [
         {
           "home": "https://github.com/gazmull/ramiel-bot",
@@ -49,6 +52,7 @@
     {
       "names": [ "Shamash" ],
       "description": "Discord bot for Kamihime PROJECT Fandom moderation. 📚",
+      "stack": [ "TypeScript", "NodeJS", "MariaDB" ],
       "urls": [
         {
           "home": "https://github.com/gazmull/shamash-bot",
@@ -61,6 +65,7 @@
     {
       "names": [ "Justitia" ],
       "description": "Discord bot for Discord server moderation. 💢❗🔨",
+      "stack": [ "TypeScript", "NodeJS", "MariaDB" ],
       "urls": [
         {
           "home": "https://github.com/gazmull/justitia-bot",
