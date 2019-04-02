@@ -1,3 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Open+Sans');
 
-$core-transition: 0.8s cubic-bezier(0.01, 1, 0.22, 0.99) 0s;
+$core-transition-style: cubic-bezier(0.01, 1, 0.22, 0.99);
+$core-transition: 0.8s $core-transition-style 0s;
