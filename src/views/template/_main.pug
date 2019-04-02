@@ -2,7 +2,6 @@ html(lang="en")
   head
     block head
       include _meta
-      link(rel='shortcut icon', type='image/png', href='assets/img/logo.png')
       block css
         include vendors/_css
       block js
@@ -22,7 +21,7 @@ html(lang="en")
               .card-body
                 img.rounded-circle.float-left(src=me.thumbnailUrl, width=80, height=80, alt='thumbnail')
                 h5.d-inline-block.card-title
-                  a(href=me.profileUrl) #{me.displayName}
+                  a(href=me.profileUrl) #{me.displayName} (#{me.preferredUsername})
                 br
                 h6.d-inline-block.card-title #{me.currentLocation}
                 hr

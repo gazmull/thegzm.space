@@ -1,24 +1,31 @@
 extends template/_main
 
-mixin banner (project)
-  - const name = `${project.name.join(' / ')}${project.ready ? '' : ' (N/A)'}`;
+mixin banner (project, prop)
+  - const name = `${project.names.join(' / ')}${project.ready ? '' : ' (N/A)'}`;
   - const src = /^https?:\/\//.test(project.img) ? project.img : `/assets/img/${project.img}`;
-  .card.bg-dark.my-1.project(id=project.name[0].replace(/ +/g, '-'))
-    - if (project.ready)
-      img.card-img(src=src, alt=name)
-    - else
-      img.card-img.covered(src=src, alt=name)
-    .card-img-overlay
-      h5.card-title
-        each v, i in project.url
-          a(href=v, target='_blank') #{project.name[i]}
-          | #{i === project.url.length - 1 ? '' : ' / '}
-      p.card-text #{project.description}
+    .card.bg-dark.my-1.project(
+      id=project.names[0].replace(/ +/g, '-'),
+      title='Click me for more info!',
+      data-prop=prop,
+      data-index=projects[prop].findIndex(p => project.names[0] === p.names[0]),
+      data-toggle='modal',
+      data-target='.modal'
+    )
+      - if (project.ready)
+        img.card-img(src=src, alt=name)
+      - else
+        img.card-img.covered(src=src, alt=name)
+      .card-img-overlay
+        h5.card-title
+          each v, i in project.names
+            | #{project.names[i]}#{i === project.urls.length - 1 ? '' : ' / '}
+        p.card-text #{project.description}
 
-mixin checkProjects (projects)
-  - if (projects && projects.length)
-    - for (const project of projects)
-      +banner(project)
+mixin checkProjects (projects, prop)
+  - const cProjects = projects[prop];
+  - if (cProjects && cProjects.length)
+    - for (const project of cProjects)
+      +banner(project, prop)
   - else
     p Hmm... nothing to see here!
 
@@ -26,13 +33,33 @@ block content
   .row
     .col-sm-12.col-md-4
       h1 My Projects
-      p Hover to an image for information
+      p Click an image for information.
       hr
       .row
         .col
           h2 Active Projects
-          +checkProjects(projects.active)
+          +checkProjects(projects, 'active')
       .row
         .col
           h2 Inactive Projects
-          +checkProjects(projects.inactive)
+          +checkProjects(projects, 'inactive')
+
+  .modal.fade(tabindex='-1', role='dialog')
+    .modal-dialog.modal-dialog-centered(role='document')
+      .modal-content.bg-dark
+        .modal-header
+          .modal-background
+            img.img-fluid(alt='project banner')
+          h4.modal-title
+          button.close.text-white(data-dismiss='modal')
+            span &times;
+        .modal-body
+          p.col-6.float-left
+          .col-6.float-right
+            h5 Home
+            p.modal-body-home
+            h5 Documentation
+            p.modal-body-docs
+
+  script.
+    const projects = !{JSON.stringify(projects)};

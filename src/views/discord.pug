@@ -1,9 +1,11 @@
-extends template/_main
+extends template/_redirect
 
 block head
-  script.
-    window.location.replace('https://discord.gg/Ryxx8z9')
-
-block navigation
-
-block body
+  meta(
+    http-equiv="refresh",
+    content="0; url=https://discord.gg/Ryxx8z9"
+  )
+  link(
+    rel="canonical",
+    href="https://discord.gg/Ryxx8z9"
+  )
