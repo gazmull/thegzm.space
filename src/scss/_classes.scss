@@ -1,5 +1,7 @@
 .container-fluid {
   max-width: 1536px;
+  opacity: 0;
+  transform: translate3d(-70px, -30px, 0) scale3d(0.85, 0.9, 0.85);
 }
 
 .navbar {
@@ -44,6 +46,16 @@
   & .modal-title, & .close {
     z-index: 1051;
   }
+  & .close {
+    padding: 0.4em 0.32em;
+    margin: -1.2rem -0.5rem -1rem auto;
+    border-top-right-radius: 5%;
+    border-top-left-radius: 5%;
+    font-weight: normal;
+    opacity: 1 !important;
+    box-shadow: $core-shadow-style;
+    background-color: $core-bg-danger;
+  }
   & .modal-background {
     z-index: 1050;
     overflow: hidden;
@@ -53,14 +65,21 @@
     height: 68px;
     & img {
       mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+      filter: grayscale(95%);
       opacity: 0.5;
     }
   }
 }
 
+.modal-open {
+  & .modal {
+    overflow-y: visible !important;
+  }
+}
+
 .modal-backdrop {
   &.show {
-    opacity: 0.0;
+    opacity: 0;
   }
 }
 
@@ -71,5 +90,5 @@
 .aero {
   border: none;
   border-radius: 0;
-  box-shadow: 0px 0px 10px rgb(30, 30, 30);
+  box-shadow: $core-shadow-style;
 }

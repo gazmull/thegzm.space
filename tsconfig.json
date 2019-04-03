@@ -5,12 +5,12 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "module": "es6",
+    "target": "es6",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "outDir": "build/js",
     "paths": { "*": ["typings/*"] },
     "removeComments": true,
     "rootDir": "src/ts",
-    "target": "es6"
   }
 }

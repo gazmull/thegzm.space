@@ -3,9 +3,11 @@
 $core-transition-style: cubic-bezier(0.01, 1, 0.22, 0.99);
 $core-transition: 0.8s $core-transition-style 0s;
 $core-bg: #333;
+$core-bg-danger: rgb(150, 0, 0);
 $core-bg-overlay: rgba(80, 80, 80, 0.65);
 $core-text: #FFF;
-$core-text-url: #FF00AE;
+$core-text-url: rgb(255, 0, 135);
 $core-text-hover: #FF00FF;
 $core-font-header: 'Quicksand', sans-serif;
 $core-font-content: 'Open Sans', sans-serif;
+$core-shadow-style: 0px 0px 10px rgb(30, 30, 30);

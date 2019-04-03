@@ -19,7 +19,7 @@ html(lang="en")
             h1 About Me
             .card.bg-transparent.aero(style='width: 20rem')
               .card-body
-                img.rounded-circle.float-left(src=me.thumbnailUrl, width=80, height=80, alt='thumbnail')
+                img.rounded-circle.float-left(data-src=me.thumbnailUrl, width=80, height=80, alt='thumbnail')
                 h5.d-inline-block.card-title
                   a(href=me.profileUrl) #{me.displayName} (#{me.preferredUsername})
                 br

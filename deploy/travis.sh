@@ -19,7 +19,7 @@ git clone $REPO dist -b $TARGET_BRANCH
 
 yarn gulp build
 
-rsync -avh build/ dist/
+rsync -avh build/ dist/ --delete-before
 
 cd dist
 git add --all .

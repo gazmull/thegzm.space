@@ -12,20 +12,20 @@ mixin banner (project, prop)
       data-target='.modal'
     )
       - if (project.ready)
-        img.card-img(src=src, alt=name)
+        img.card-img(data-src=src, alt=name)
       - else
-        img.card-img.covered(src=src, alt=name)
+        img.card-img.covered(data-src=src, alt=name)
       .card-img-overlay
-        h3.card-title
+        h5.card-title
           each v, i in project.names
             | #{project.names[i]}#{i === project.urls.length - 1 ? '' : ' / '} 
         p
           - if (!project.ready)
-            span.badge.badge-danger NOT AVAILABLE
+            span.d-none.d-xl-inline-block.badge.badge-danger NOT AVAILABLE
             | 
           - const cleanedLangs = project.stack.filter((v, i, arr) => arr.indexOf(v) === i);
           each v in cleanedLangs
-            span.badge.badge-secondary #{v}
+            span.d-none.d-xl-inline-block.badge.badge-secondary #{v}
             | 
 
 mixin checkProjects (projects, prop)
@@ -36,21 +36,7 @@ mixin checkProjects (projects, prop)
   - else
     p Hmm... nothing to see here!
 
-block content
-  .row
-    .col-sm-12.col-lg-4
-      h1 My Projects
-      p Click an image for information.
-      hr
-      .row
-        .col
-          h2 Active Projects
-          +checkProjects(projects, 'active')
-      .row
-        .col
-          h2 Inactive Projects
-          +checkProjects(projects, 'inactive')
-
+append navigation
   .modal.fade(tabindex='-1', role='dialog')
     .modal-dialog.modal-dialog-centered(role='document')
       .modal-content.aero.bg-transparent
@@ -67,6 +53,21 @@ block content
             p.modal-body-home
             h5 Documentation
             p.modal-body-docs
+
+block content
+  .row
+    .col-sm-12.col-lg-4
+      h1 My Projects
+      p Click an image for information.
+      hr
+      .row
+        .col
+          h2 Active Projects
+          +checkProjects(projects, 'active')
+      .row
+        .col
+          h2 Inactive Projects
+          +checkProjects(projects, 'inactive')
 
   script.
     const projects = !{JSON.stringify(projects)};

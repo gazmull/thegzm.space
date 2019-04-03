@@ -88,7 +88,7 @@ gulp.task('terser', () => {
 });
 
 gulp.task('assets', () => {
-  return gulp.src(paths.src + '/assets/**/*')
+  return gulp.src(paths.src + '/assets/**/*.!(json)')
     .pipe(gulp.dest(paths.build + '/assets'));
 });
 

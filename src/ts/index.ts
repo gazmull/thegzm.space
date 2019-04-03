@@ -4,8 +4,10 @@ declare const projects: {
   [key: string]: IProject[];
 };
 
-$(() => {
+$(async () => {
   let relatedTarget: JQuery<HTMLElement> = null;
+
+  await readyImages($('.container-fluid img'));
 
   $('.project')
     .on('mouseenter', function () {
@@ -54,14 +56,12 @@ $(() => {
     ].join(' '));
     modal.find('.modal-body-home').html(linkify('home'));
     modal.find('.modal-body-docs').html(linkify('docs'));
+    modal.find('.modal-dialog').addClass('invisible');
 
-    modal.find('.modal-dialog')
-        .attr('class', 'modal-dialog modal-dialog-centered animated popOut');
-
-    setTimeout(() => {
-      $(`#${relatedTarget[0].id} .card-img-overlay`).addClass('hovered');
-      $(`#${relatedTarget[0].id} img`).addClass('hovered');
-    }, 400);
+    setTimeout(() =>
+      modal.find('.modal-dialog')
+          .attr('class', 'modal-dialog modal-dialog-centered animated popOut')
+    , 512);
   })
   .on('hide.bs.modal', function () {
     const modal = $(this);
@@ -75,7 +75,7 @@ $(() => {
       $(`#${relatedTarget[0].id} img`).removeClass('hovered');
 
       relatedTarget = null;
-    }, 400);
+    }, 512);
   });
 
   const matched = /(#.+)$/.exec(window.location.href);
@@ -83,6 +83,33 @@ $(() => {
   if (matched) {
     relatedTarget = $(`.project${matched[1]}`);
 
-    $('.modal').modal('show');
+    setTimeout(() => $('.modal').modal('show'), 1000);
   }
 });
+
+async function readyImages (images: JQuery<HTMLElement>) {
+  await Promise.all(images.map(
+    function () {
+      return new Promise(res => {
+        const src = this.getAttribute('data-src');
+
+        if (!src) return res(true);
+
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          this.setAttribute('src', src);
+
+          return res(true);
+        };
+        img.onerror = () => {
+          this.setAttribute('alt', 'Could not load the image.');
+
+          return res(true);
+        };
+      });
+    }
+  ));
+
+  return $('.container-fluid').addClass('animated popOut');
+}
