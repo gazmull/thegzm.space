@@ -1,8 +1,4 @@
 {
-  "name": "thegzm.space",
-  "description": "TheGzM.Space Homepage test",
-  "version": "1.0.0",
-  "main": "src/index.js",
   "repository": "https://github.com/gazmull/thegzm.space",
   "author": "Euni <vescalaw@gmail.com>",
   "license": "MIT",
