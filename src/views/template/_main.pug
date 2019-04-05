@@ -15,10 +15,12 @@ html(lang="en")
     block body
       .container-fluid
         .row
-          .col-4.position-absolute.d-none.d-lg-block.mx-auto(style='right: 0;')
+          .col-sm-12.col-md-4#about
             h1 About Me
             .card.bg-transparent.aero(style='width: 20rem')
               .card-body
+                button.close.text-white.d-lg-none#about-dialog-btn(data-dismiss='modal')
+                  span &times;
                 img.rounded-circle.float-left(data-src=me.thumbnailUrl, width=80, height=80, alt='thumbnail')
                 h5.d-inline-block.card-title
                   a(href=me.profileUrl) #{me.displayName} (#{me.preferredUsername})
@@ -33,6 +35,10 @@ html(lang="en")
                       | #{i === me.urls.length - 1 ? '' : ' | '}
                     |  | 
                     a(href='https://github.com/gazmull') Github
-        block content
-        block footer
-          include _footer
+        content
+          block content
+        footer
+          block footer
+            include _footer
+    
+
