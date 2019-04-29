@@ -5,7 +5,7 @@ set -e
 
 if [ "$TRAVIS_BRANCH" != "master" -o -n "$TRAVIS_TAG" -o "$TRAVIS_PULL_REQUEST" != "false" ]; then
   echo -e "Not building for a non master branch push - building without deploying."
-  yarn test
+  npx gulp build
   exit 0
 fi
 
@@ -17,7 +17,7 @@ TARGET_BRANCH="gh-pages"
 
 git clone $REPO dist -b $TARGET_BRANCH
 
-yarn gulp build
+npx gulp build
 
 rsync --delete-before --exclude='.git' --exclude='CNAME' -avh build/ dist/
 
