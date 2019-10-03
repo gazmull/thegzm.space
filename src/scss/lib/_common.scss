@@ -71,9 +71,9 @@ nav {
     z-index: 1;
     & #toggle span {
       transition: transform 0.5s ease 0s;
-      transform: translate3d(0, 5px, 0);
+      transform: translate3d(0, 0, 0);
       &.activated {
-        transform: translate3d(1px, 5px, 0) rotate(270deg);
+        transform: translate3d(0, 0, 0) rotate(270deg);
         will-change: transform;
       }
     }
